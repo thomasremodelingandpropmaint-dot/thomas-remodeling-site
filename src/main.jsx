@@ -262,15 +262,44 @@ function App() {
         <div className="calculator-layout">
           <div className="calculator-grid">
             <Counter label="65 inch+ TV Mount" value={tv65} setValue={setTv65} helper="$140 each, standard drywall install" />
-            <Counter label="Standard TV Mount" value={tvStandard} setValue={setTvStandard} helper="$110 each, under 65 inch" />
-            <Counter label="Dining Chairs" value={chairs} setValue={setChairs} helper="$25 each" />
-            <Counter label="Small Furniture" value={smallFurniture} setValue={setSmallFurniture} helper="$60 each" />
-            <Counter label="Medium Furniture" value={mediumFurniture} setValue={setMediumFurniture} helper="$120 each" />
-            <Counter label="Large Furniture" value={largeFurniture} setValue={setLargeFurniture} helper="$200 each" />
-            <Counter label="Outlet / Switch Swap" value={outlets} setValue={setOutlets} helper="$40 each, service minimum applies" />
-            <Counter label="Light Fixture Swap" value={fixtures} setValue={setFixtures} helper="$150 each, basic fixture" />
-            <Counter label="Faucet Install" value={faucets} setValue={setFaucets} helper="$225 each, customer supplies faucet" />
-            <Counter label="Small Drywall Patch" value={drywallPatches} setValue={setDrywallPatches} helper="$175 each, simple patch" />
+
+<Counter label="Standard TV Mount" value={tvStandard} setValue={setTvStandard} helper="$110 each, under 65 inch" />
+
+<Counter label="Dining Chairs" value={chairs} setValue={setChairs} helper="$25 each" />
+
+<Counter label="Small Furniture" value={smallFurniture} setValue={setSmallFurniture} helper="$60 each" />
+
+<Counter label="Medium Furniture" value={mediumFurniture} setValue={setMediumFurniture} helper="$120 each" />
+
+<Counter label="Large Furniture" value={largeFurniture} setValue={setLargeFurniture} helper="$200 each" />
+
+<Counter label="Outlet / Switch Swap" value={outlets} setValue={setOutlets} helper="$40 each, service minimum applies" />
+
+<Counter label="Light Fixture Swap" value={fixtures} setValue={setFixtures} helper="$150 each, basic fixture" />
+
+<Counter label="Ceiling Fan Install" value={fixtures} setValue={setFixtures} helper="$185 each, standard replacement" />
+
+<Counter label="Faucet Install" value={faucets} setValue={setFaucets} helper="$225 each, customer supplies faucet" />
+
+<Counter label="Toilet Repair / Leak" value={faucets} setValue={setFaucets} helper="$150 each, basic repair" />
+
+<Counter label="Small Drywall Patch" value={drywallPatches} setValue={setDrywallPatches} helper="$175 each, simple patch" />
+
+<Counter label="Door Handle / Lock Swap" value={outlets} setValue={setOutlets} helper="$65 each" />
+
+<Counter label="Smoke Detector Install" value={smallFurniture} setValue={setSmallFurniture} helper="$45 each" />
+
+<Counter label="Curtain / Blind Install" value={mediumFurniture} setValue={setMediumFurniture} helper="$85 each" />
+
+<Counter label="Shelf / Mirror Mounting" value={largeFurniture} setValue={setLargeFurniture} helper="$95 each" />
+
+<Counter label="Garbage Disposal Swap" value={fixtures} setValue={setFixtures} helper="$275 each" />
+
+<Counter label="Bathroom Vanity Install" value={faucets} setValue={setFaucets} helper="$450 each, labor only" />
+
+<Counter label="Interior Door Install" value={drywallPatches} setValue={setDrywallPatches} helper="$250 each, standard slab door" />
+
+<Counter label="Small Grass Cut" value={chairs} setValue={setChairs} helper="$50 each, small rowhome yard" />
           </div>
 
           <aside className="estimate-card">
