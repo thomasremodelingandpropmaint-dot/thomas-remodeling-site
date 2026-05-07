@@ -142,7 +142,7 @@ function App() {
 
         <div className="calculator-layout">
           <div className="calculator-grid">
-            <Counter label="65 inch+ TV Mount" value={tv65} setValue={setTv65} helper="$140 each, standard drywall install" />
+<Counter label="65 inch+ TV Mount" value={tv65} setValue={setTv65} helper="$140 each, standard drywall install" />
 
 <Counter label="Standard TV Mount" value={tvStandard} setValue={setTvStandard} helper="$110 each, under 65 inch" />
 
