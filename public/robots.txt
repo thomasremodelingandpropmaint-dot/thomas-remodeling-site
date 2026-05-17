@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thomas-remodeling-site.vercel.app/sitemap.xml
