@@ -140,22 +140,59 @@ function App() {
         <div className="quote-card">
           <h2>Request a Fast Quote</h2>
           <p>Send photos and a short description of what needs to be fixed.</p>
-          <form>
-            <input placeholder="Name" />
-            <input placeholder="Phone number" />
-            <input placeholder="Property address" />
-            <select>
-              <option>What do you need help with?</option>
-              <option>Painting / drywall</option>
-              <option>TV mounting / furniture assembly</option>
-              <option>Fixture or outlet replacement</option>
-              <option>Plumbing repair</option>
-              <option>Landlord turnover</option>
-              <option>Other</option>
-            </select>
-            <textarea placeholder="Briefly describe the job"></textarea>
-            <a className="btn dark full" href={`sms:2672422133?body=${encodeURIComponent("Hi, I would like a quote. I can send photos and job details.")}`}>Submit Quote Request</a>
-          </form>
+         <form>
+  <input
+    placeholder="Name"
+    value={quoteForm.name}
+    onChange={(e) => updateQuoteForm("name", e.target.value)}
+  />
+
+  <input
+    placeholder="Phone number"
+    value={quoteForm.phone}
+    onChange={(e) => updateQuoteForm("phone", e.target.value)}
+  />
+
+  <input
+    placeholder="Property address"
+    value={quoteForm.address}
+    onChange={(e) => updateQuoteForm("address", e.target.value)}
+  />
+
+  <select
+    value={quoteForm.jobType}
+    onChange={(e) => updateQuoteForm("jobType", e.target.value)}
+  >
+    <option value="">What do you need help with?</option>
+    <option value="Painting / drywall">Painting / drywall</option>
+    <option value="TV mounting / furniture assembly">TV mounting / furniture assembly</option>
+    <option value="Fixture or outlet replacement">Fixture or outlet replacement</option>
+    <option value="Plumbing repair">Plumbing repair</option>
+    <option value="Landlord turnover">Landlord turnover</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <textarea
+    placeholder="Briefly describe the job"
+    value={quoteForm.description}
+    onChange={(e) => updateQuoteForm("description", e.target.value)}
+  />
+
+  <button
+    type="button"
+    className="btn dark full"
+    onClick={openTextQuote}
+  >
+    Text Quote Request
+  </button>
+
+  <a
+    className="btn outline full"
+    href={`mailto:thomasremodelingandprop.maint@gmail.com?subject=Quote Request&body=${encodeURIComponent(buildQuoteMessage())}`}
+  >
+    Email Quote Request
+  </a>
+</form>
         </div>
       </section>
 
@@ -267,5 +304,50 @@ function App() {
     </main>
   );
 }
+const [quoteForm, setQuoteForm] = useState({
+  name: "",
+  phone: "",
+  address: "",
+  jobType: "",
+  description: ""
+});
 
+const updateQuoteForm = (field, value) => {
+  setQuoteForm((prev) => ({
+    ...prev,
+    [field]: value
+  }));
+};
+
+const buildQuoteMessage = () => {
+  return `Quote Request
+
+Name: ${quoteForm.name || "Not provided"}
+Phone: ${quoteForm.phone || "Not provided"}
+Address: ${quoteForm.address || "Not provided"}
+Job Type: ${quoteForm.jobType || "Not selected"}
+Description: ${quoteForm.description || "Not provided"}
+
+Estimator Range: ${estimateText || "Not used"}
+Selected Items: ${typeof selectedSummary !== "undefined" ? selectedSummary : "Not used"}
+
+I can send photos for confirmation.`;
+};
+
+const openTextQuote = async () => {
+  const message = buildQuoteMessage();
+
+  try {
+    await navigator.clipboard.writeText(message);
+  } catch (error) {
+    console.log("Clipboard copy failed", error);
+  }
+
+  const encodedMessage = encodeURIComponent(message);
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  window.location.href = isIOS
+    ? `sms:2672422133&body=${encodedMessage}`
+    : `sms:2672422133?body=${encodedMessage}`;
+};
 createRoot(document.getElementById("root")).render(<App />);
